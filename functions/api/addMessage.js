@@ -1,6 +1,6 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
-const logger = functions;
+const {logger} = functions;
 
 exports.addMessage = functions.https.onCall(async (data, context) => {
   try {
