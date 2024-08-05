@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# Quantum Bot Core
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Quantum Bot Core is a robust Firebase-powered solution designed to efficiently manage user interactions and securely store conversations for chatbot applications. This project uses Firebase's real-time database capabilities and features to ensure seamless operation and data security. Please refer to [this link](https://pitch.com/v/quantumbot-core-hzk37b)
 
-## Available Scripts
+## API Documentation
 
-In the project directory, you can run:
+For detailed documentation on using the endpoints, refer to [Quantum Bot Core API Documentation](https://us-central1-quantumbotcore-d095e.cloudfunctions.net/swagger).
+You can store messages using the API endpoint: [https://us-central1-quantum-bot-core-72974.cloudfunctions.net](https://us-central1-quantumbotcore-d095e.cloudfunctions.net)
 
-### `npm start`
+## Getting Started
+To get the project up and running locally or on Firebase, follow these steps:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Setting up the IDE
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node.js (Version 18.20.3 or higher)
+- npm (Version 10.7.0 or higher)
+- Firebase CLI (install with `npm install -g firebase-tools`)
 
-### `npm test`
+### Installation Steps
+1. **Clone the Project:**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+  git clone https://github.com/prachikane/quantumbot.git
+  cd quantumbot
+```
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Create a Firebase Project:**
+- Navigate to [Firebase Console](https://console.firebase.google.com)
+- Create a new project named `quantumbot`
+- Disable Google Analytics for this project
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Set Firebase Project ID:**
+- Find your Project ID (`quantum-bot-core-72974`for example) in Firebase Console. Usually in the Project setting, field Project ID.
+- Update `.firebaserc` with your Project ID
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. **Set up Firebase Web App:**
+- Go to Project Settings -> Your Project -> Web App
+- Register a new web app and copy the Firebase config (`firebaseConfig`) to `src/firebase_config.js`
 
-### `npm run eject`
+5. **Create Firestore Database:**
+- Go to Firestore Database -> Create Database -> Start in test mode
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+6. **Set up Authentication:**
+- Go to Authentication -> Get Started -> Enable Email/Password Sign-in method
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+7. **Upgrade Billing Plan:**
+- Go to Project Settings -> Billing -> Upgrade to Blaze plan (set budget to $0)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+8. **Install Dependencies:**
+- Install Firebase CLI and Node dependencies:
+  ```
+  npm install -g firebase-tools
+  npm install firebase
+  ```
+  
+9. **Firebase Init:**
+ - Go to the terminal and run the command firebase init and select the project you created.
+   ```
+   firebase init
+   cd functions
+   npm install
+   ```
+   
+10. **Login to Firebase CLI:**
+ ```
+ firebase login
+ ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+11. **Deploy Functions:**
+ - Deploy only functions:
+   ```
+   firebase deploy --only functions
+   ```
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## How to use
+- After deployment, your Firebase project will be ready to manage user interactions and store chatbot conversations securely. Refer to API documentation to know how to use the endpoints.
+- Now go to Postman and create a request for every function you created with the API that you get after deploying the functions to your firebase project.
+- Create a header in the headers section with content-type as application/json.
+- Then go to body section and send the data to the api using the raw json format.
+- That is a short video of a usage demonstration. [link](https://www.loom.com/share/b0c362154c704724b059ab6e9cbfdbd6?sid=bc5f0e5e-e2f0-4ee8-8675-4c8a7565d1a9)
